@@ -19,8 +19,10 @@ app.use(express.static(path.join(__dirname, './public')));
 
 // routes 
 import * as routes from './routes/index.js'; // TODO: shouldn't need index.js
-app.use('/', routes.HomeRouter);
-
+for (let name in routes) {
+    console.log(`mounting ${name} on /`);
+    app.use('/', routes[name]);
+}
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
