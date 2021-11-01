@@ -2,6 +2,8 @@
  * This code is responsible for authenticating the google sign in, 
  * e.g. proving that it is valid.
  * 
+ * This process is followed from here (https://developers.google.com/identity/gsi/web/guides/verify-google-id-token)
+ * 
  * This happens in two steps:
  *  - validate the csrf token in the request body and in the cookie
  *

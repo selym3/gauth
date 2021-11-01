@@ -2,6 +2,13 @@
 
 simple website to interface with google's authentication api
 
-# setup
+## setup
 
 <https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid>
+
+## todo
+
+* finish routing
+* add dynamic loading of pages
+* finish setup guide
+* MAYBE add sequelize

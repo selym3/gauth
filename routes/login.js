@@ -2,6 +2,7 @@ import { Router } from 'express';
 var router = Router();
 
 import { verifySignInToken, verifyCsrfToken } from '../util/authentication.js'
+import { getAccessToken, TokenCookie } from '../util/authorization.js';
 
 /**
  * Google sign in will send a request to this endpoint 
@@ -25,14 +26,28 @@ router.post('/login', async (req, res) => {
         );
         
         let usr = await verifySignInToken(req.body['credential']);
-
-        // CREATE A JWT FOR THE USER //
-
         console.log(usr);
-        res.end('OK');
+            
+        // CREATE + STORE A JWT FOR THE USER //
+        
+        let jwt = getAccessToken(
+            // this object will be encoded in the jwt and will
+            // appear in each request from the browser.
+            // NOTE: in most apps, one of these values refers to some entry in a database,
+            // so that not everything will be stored in the jwt
+            {
+                sub: usr.sub,
+                name: usr.name,
+            }
+        );
+        TokenCookie.set(res, jwt);
+
+        console.log(jwt);
+
+        res.redirect('/');
     } catch (err) {
         console.error(err);
-        res.end('failed');
+        res.redirect('/');
     }
 
 });
