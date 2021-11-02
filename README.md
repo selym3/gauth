@@ -8,7 +8,7 @@ simple website to interface with google's authentication api
 
 ## todo
 
-* finish routing
-* add dynamic loading of pages
 * finish setup guide
-* MAYBE add sequelize
+* make actual panel look better
+* maybe add sequelize
+* host with free heroku (and add section describing this)
