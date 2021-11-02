@@ -1,7 +1,6 @@
 <nav>
     <a href="/"><b>gauth</b></a>
-    <a href="/">one</a>
-    <a href="/">two</a>
-    <a href="/">three</a>
-    <a href="/">four</a>
+    <% if (locals.authed) { %>
+        <a href="/signout">Sign Out</a>
+    <% } %>
 </nav> 
