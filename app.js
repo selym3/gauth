@@ -1,3 +1,13 @@
+/**
+ * This file creates an express app object, and 
+ * 
+ *   - adds the proper middlewares to it
+ *   - adds the user defined endpoints 
+ *   - exports the app object
+ *
+ * (almost all this code is auto generated)
+ */
+
 import createError from 'http-errors';
 import express from 'express';
 import path from 'path';

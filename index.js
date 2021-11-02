@@ -1,3 +1,10 @@
+/**
+ * This file imports the app object exported by
+ * app.js and uses it to start a http server
+ * 
+ * (almost all this code is auto generated)
+ */
+
 import app from './app.js'
 import http from 'http'
 import createDebugger from 'debug';
