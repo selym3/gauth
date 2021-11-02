@@ -18,11 +18,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public')));
 
 // routes 
-import * as routes from './routes/index.js'; // TODO: shouldn't need index.js
-for (let name in routes) {
-    console.log(`mounting ${name} on /`);
-    app.use('/', routes[name]);
-}
+import home from './routes/home.js'
+import signin from './routes/signin.js'
+import signout from './routes/signout.js'
+
+app.use(home);
+app.use(signin);
+app.use(signout);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
