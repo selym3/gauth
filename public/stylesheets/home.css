@@ -1,0 +1,17 @@
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    text-align: center;
+}
+
+.centered .bigger {
+    font-size: 600%;
+    font-weight: bold;
+}
+
+.centered pre {
+    font-size: 200%;
+}

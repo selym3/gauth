@@ -14,12 +14,20 @@ var router = Router();
  */
 
 router.get('/', requireAuth(), (_req, res) => { 
-    res.render('layout', {
-        title:'Home', 
-        page:'home',
-        GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID, 
-        GOOGLE_LOGIN_ENDPOINT: process.env.GOOGLE_LOGIN_ENDPOINT
-    }); 
+    res.render(
+        'layout', 
+        
+        // Looking at pages/home.ejs, it may seem that sub and name 
+        // are missing from the data here, but they are actually stored 
+        // in res.locals (see getMiddleware(...) in util/authorization.js), which is 
+        // automatically passed in to the EJS template
+
+        {
+            title:'Home', 
+            page:'home',
+            css: ['stylesheets/home.css']
+        }
+    ); 
 });
 
 export default router;

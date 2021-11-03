@@ -8,6 +8,12 @@
     <link href="stylesheets/general.css" rel="stylesheet" />
     <link href="stylesheets/navbar.css" rel="stylesheet" />
     
+    <% if (locals.css) { %>
+        <% for (let href of locals.css) { %>
+            <link href="<%= href %>" rel="stylesheet" />
+        <% } %>
+    <% } %>
+
     <title><%= title %> | gauth</title> 
 </head>
 <body>

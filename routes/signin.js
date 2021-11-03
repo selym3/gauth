@@ -25,10 +25,10 @@ router.get('/signin', requireUnauth(), (req, res) => {
  * that contains a body with a csrf token and a JWT credential.
  * A csrf token is also placed in the cookies. 
  * 
- * If the google sign in attempt passes authentication,
- *  
+ * If the google sign in attempt passes authentication, the user
+ * gets a valid jwt in a cookie and they are redirected to /
  */
-router.post('/signin', async (req, res) => {
+router.post('/signin', requireUnauth(), async (req, res) => {
 
     try {
 
@@ -42,15 +42,16 @@ router.post('/signin', async (req, res) => {
         );
 
         let usr = await verifySignInToken(req.body['credential']);
-        console.log(usr);
 
         // CREATE + STORE A JWT FOR THE USER //
 
         let jwt = getAccessToken(
             // this object will be encoded in the jwt and will
             // appear in each request from the browser.
+            // 
             // NOTE: in most apps, one of these values refers to some entry in a database,
-            // so that not everything will be stored in the jwt
+            // so the server can load from that db, meaning that not everything will 
+            // be stored in the jwt
             {
                 sub: usr.sub,
                 name: usr.name,

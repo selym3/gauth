@@ -122,6 +122,10 @@ function verifyRequest(req, res) {
 
 function getMiddleware(callbacks) {
     return (req, res, next) => {
+
+        // reminder atp: payload contains whatever was in the jwt, 
+        // which is whatever was passed into getAccessToekn(...) (see routes/signin.js)
+
         let payload = verifyRequest(req, res);
         if (payload) {
 
@@ -131,6 +135,9 @@ function getMiddleware(callbacks) {
             //
             // This would be a good place to perform some data-loading operation
             // like loading a users data based on their id in the jwt
+            //
+            // res.locals also gets passed into the EJS template automatically (see routes/home.js), 
+            // which is very convenient
 
             res.locals.authed = true;
             
@@ -160,7 +167,7 @@ export function requireAuth() {
 }
 
 // this middleware requires the user to be signed out,
-// will redirect back to ... 
+// will redirect back to the protected page
 
 export function requireUnauth() {
     return getMiddleware({

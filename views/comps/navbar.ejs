@@ -1,9 +1,11 @@
 <nav>
-    <a href="/"><b>gauth</b></a>
-    <%# NOTE: i use locals. here because it allows you to use undefined values. %>
+    <a href="/" class="bold">gauth</a>
+    
+    <%# NOTE: i use "locals." here because it allows you to use undefined values. %>
     <%# Otherwise if authed is undefined (and we want to treat it as false), EJS %>
     <%# will tell us that it's undefined if you DONT use locals. %>
     <% if (locals.authed) { %>
-        <a href="/signout">Sign Out</a>
+        <img src="<%= picture %>"/>
+        <a href="/signout">sign out</a>
     <% } %>
 </nav> 
